@@ -55,6 +55,8 @@
 
 #if STDC_HEADERS
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 #else
 #if HAVE_STRING_H
 #include <string.h>
@@ -112,7 +114,12 @@ char *
 Strdup PARAMS ((istring),
      const char *istring)
 {
-    char *ret = strdup(istring);
+#ifdef _WIN32
+# define STRDUP _strdup
+#else
+# define STRDUP strdup
+#endif
+	char *ret = STRDUP(istring);
     if (ret == NULL)
     {
         fprintf (stderr, "out of memory! bye!\n");
