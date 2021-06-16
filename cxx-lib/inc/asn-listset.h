@@ -14,8 +14,7 @@
 	#pragma warning(disable: 4786)		// Disable symbols truncated warning
 #endif
 #ifdef WIN32
-#include <winsock2.h>
-#include <windows.h>
+#include <misc/winheader.h>
 #include <stdlib.h>
 #endif
 
